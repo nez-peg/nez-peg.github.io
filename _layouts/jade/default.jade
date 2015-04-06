@@ -1,0 +1,25 @@
+extends layout
+
+block header
+  +css('/css/style.css')
+
+block content
+    .contents
+      .left-bar
+        .left-logo
+          p.large-font Nez
+          a(href="https://github.com/nez-peg/nez")
+            i.fa.fa-github.large-font
+            | &nbsp;
+            | Github
+        .left-content
+          .left-panel(href="/")
+            | Overview
+          .left-panel(href="./document.html")
+            | Document
+          .left-panel(href="http://www.ubicg.ynu.ac.jp/nez/playground/")
+            | Playground
+      .main-content
+        //img.logo(src="./image/nez_llogo1080p.png", height="300px")
+        | {{content}}
+        
