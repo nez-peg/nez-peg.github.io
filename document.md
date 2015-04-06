@@ -1,6 +1,0 @@
----
-layout: default
----
-
-Getting Started
---------

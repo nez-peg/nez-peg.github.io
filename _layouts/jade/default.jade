@@ -1,3 +1,11 @@
+mixin js(path)
+  script(type='text/javascript', src="."+path)
+mixin js_async(path)
+  script(type='text/javascript', src="."+path, async='async')
+mixin css(path)
+  link(rel='stylesheet', href="."+path)
+mixin template(id)
+  script(id=id, type="text/x-jquery-tmpl")
 extends layout
 
 block header
@@ -13,9 +21,9 @@ block content
             | &nbsp;
             | Github
         .left-content
-          .left-panel(href="/")
+          .left-panel.selected(href="/")
             | Overview
-          .left-panel(href="./document.html")
+          .left-panel(href="./document")
             | Document
           .left-panel(href="http://www.ubicg.ynu.ac.jp/nez/playground/")
             | Playground
