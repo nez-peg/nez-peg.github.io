@@ -1,0 +1,33 @@
+mixin js(path)
+  script(type='text/javascript', src=".."+path)
+mixin js_async(path)
+  script(type='text/javascript', src=".."+path, async='async')
+mixin css(path)
+  link(rel='stylesheet', href=".."+path)
+mixin template(id)
+  script(id=id, type="text/x-jquery-tmpl")
+extends layout
+
+block header
+  +css('/css/style.css')
+
+block content
+    .contents
+      .left-bar
+        .left-logo
+          p.large-font Nez
+          a(href="https://github.com/nez-peg/nez")
+            i.fa.fa-github.large-font
+            | &nbsp;
+            | Github
+        .left-content
+          .left-panel(href="/")
+            | Overview
+          .left-panel.selected(href="/document")
+            | Document
+          .left-panel(href="http://www.ubicg.ynu.ac.jp/nez/playground/")
+            | Playground
+      .main-content
+        //img.logo(src="./image/nez_llogo1080p.png", height="300px")
+        | {{content}}
+        
