@@ -30,7 +30,14 @@
         </div>
         <div class="left-content">
           <div href="/" class="left-panel">Overview</div>
-          <div href="/document" class="left-panel selected">Document</div>
+          <div class="left-panel-off">
+            Document
+            {% for post in site.posts %}
+          </div>
+          <div href="{{ post.url }}" class="left-small-panel">
+            {{ post.title }}
+            {% endfor %}
+          </div>
           <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
         </div>
       </div>

@@ -23,8 +23,12 @@ block content
         .left-content
           .left-panel(href="/")
             | Overview
-          .left-panel.selected(href="/document")
+          .left-panel-off
             | Document
+            |{% for post in site.posts %}
+          .left-small-panel(href="{{ post.url }}")
+            | {{ post.title }}
+            |{% endfor %}
           .left-panel(href="http://www.ubicg.ynu.ac.jp/nez/playground/")
             | Playground
       .main-content

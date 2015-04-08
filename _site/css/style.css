@@ -39,18 +39,28 @@ body {
   padding-right: 15px;
 }*/
 
-.left-panel {
+.left-panel, .left-panel-off, .left-small-panel {
   width: 100%;
-  font-size: 16px;
-  padding: 10px 15px;
   background-color: #2e2e2e;
   color: #c8c8c8;
   cursor: pointer;
   transition: all .08s cubic-bezier(.4,0,.2,1);
 }
 
-.left-panel:hover {
+.left-panel, .left-panel-off {
+  font-size: 16px;
+  padding: 10px 15px;
+}
+
+.left-small-panel {
+  font-size: 14px;
+  padding: 5px 15px;
+  padding-left: 30px;
+}
+
+.left-panel:hover, .left-small-panel:hover {
   background-color: #4c4c4c;
+  color: #f6f6f6;
 }
 
 .main-content {
@@ -72,8 +82,8 @@ body {
 }
 
 .selected, .selected:hover {
-    background-color: #4c4c4c;
-    color: #c8c8c8;
+  background-color: #4c4c4c;
+  color: #f5efff;
 }
 
 .large-font {

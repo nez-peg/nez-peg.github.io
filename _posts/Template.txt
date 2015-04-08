@@ -1,0 +1,14 @@
+---
+layout: document
+title: "ここにはページのタイトルを入れてください"
+categories: [document]
+---
+
+ここから内容をMarkdown形式で書いてください
+
+
+
+---------以下はJekyllの仕様による注意事項です---------
+
+ファイル名は　"2015-04-08-XXXX.md" というフォーマットで書いてください
+1ファイル1ページとなり、アドレスは"http://nez-peg.github.io/document/XXXX.html"となります
