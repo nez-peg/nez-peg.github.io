@@ -2,7 +2,7 @@
 layout: default
 ---
 
-![logo](image/nez_llogo1080p.png){: style="height: 300px; vertical-align:middle; margin: 15px 100px; margin-bottom: 50px;"}
+![logo](image/nez_logo.png){: style="vertical-align:middle; margin: 15px 100px; margin-bottom: 50px;"}
 
 Quick Start
 -----------
