@@ -49,6 +49,25 @@
       </div>
       <div class="main-content">
         <!--img.logo(src="./image/nez_llogo1080p.png", height="300px")--><h2 id="getting-started">Getting Started</h2>
+<pre><code class="language-nez">
+File
+    = { (__ @SourceElement)* __ #Source }
+
+SINGLE_LINE_COMMENT
+    = '//' (!LINE_TERMINATOR? .)*
+SPACE
+    = [\t\v\f \u00A0\uFEFF]
+// Space including line terminator
+__
+    [example: /* comment*/[]]
+    [example: //comment]
+    = (&lt;block&gt;SPACE+ / !LINE_TERMINATOR_SEQUENCE / COMMENT)*
+EOS
+    = __ '//'
+    / _ SINGLE_LINE_COMMENT? LINE_TERMINATOR_SEQUENCE
+    / _ "}"
+
+</code></pre>
 
       </div>
     </div>
