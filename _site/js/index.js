@@ -1,6 +1,8 @@
+//var hljs = require('../vender/highlightjs/highlight.js');
+
 var smallPanels;
 $(function(){
-  //smallPanel = document.getElementsByClassName("left-small-panel");
+  hljs.initHighlightingOnLoad();
   smallPanels = $(".left-small-panel");
 
   var currentPathElement = location.pathname;

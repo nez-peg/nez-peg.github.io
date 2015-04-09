@@ -7,12 +7,14 @@ html(lang='ja')
     meta(name="viewport" content="width=device-width, initial-scale=1")
     +css('/vendor/bootstrap/css/bootstrap.css')
     +css('/vendor/font-awesome/css/font-awesome.min.css')
+    +css('/vendor/highlight/styles/monokai.css')
     block header
   body
     .js-loader
       +js('/vendor/jquery/jquery.min.js')
       +js('/vendor/bootstrap/js/bootstrap.min.js')
       +js('/vendor/jquery/jquery.tmpl.min.js')
+      +js('/vendor/highlight/highlight.pack.js')
       +js('/js/index.js')
       include config
       block loadFiles
