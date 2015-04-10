@@ -4,6 +4,26 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 
 */
 
+/*for NEZ*/
+
+.hljs .hljs-rule {
+  color: #795da3;
+}
+
+.hljs .hljs-at {
+  color: #f92672;
+}
+
+.hljs .hljs-example {
+  color: #0086b3;
+}
+
+.hljs .hljs-util {
+  color: #a71d5d;
+}
+
+/*for NEZ end*/
+
 .hljs {
   display: block;
   overflow-x: auto;
