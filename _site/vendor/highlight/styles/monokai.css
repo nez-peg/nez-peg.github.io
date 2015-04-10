@@ -27,6 +27,26 @@ Monokai style - ported by Luigi Maselli - http://grigio.org
   color: #ddd;
 }
 
+/*for NEZ*/
+
+.hljs .hljs-rule {
+  color: #66d9ef;
+}
+
+.hljs .hljs-at {
+  color: #f92672;
+}
+
+.hljs .hljs-example {
+  color: #bf79db;
+}
+
+.hljs .hljs-util {
+  color: #bf79db;
+}
+
+/*for NEZ end*/
+
 .hljs .hljs-constant,
 .asciidoc .hljs-code,
 .markdown .hljs-code {
