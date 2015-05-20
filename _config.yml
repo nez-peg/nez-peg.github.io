@@ -1,0 +1,6 @@
+auto: true
+server: true
+markdown: kramdown
+basePath: "http://nez-peg.github.io"
+permalink: none
+categories: [index, document]
