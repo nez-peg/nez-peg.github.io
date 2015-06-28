@@ -1,15 +1,17 @@
 ---
 layout: document
-title: "Generators"
+title: "Parser Generators"
 categories: [document]
 ---
 
-
 # Parser Generators
 
+Here is a list of parser generators that are supported by Nez. 
 
+* [CNez[(#CNez)
+* [LPeg convertor](#LPeg)
 
-## CNez
+## CNez {#cnez} 
 
 CNez is a parser generator for C/C++.
 
@@ -19,18 +21,26 @@ $ nez cnez -p math.nez > math.c
 
 #### Limitations:
 
-Known limitations are:
-
-* no support for AST construction
+* No support for AST construction
 * ...
 
-## LPeg convertor
+## LPeg convertor  {#lpeg}
 
 LPeg converter is a grammar converter that generates a grammar file written in LPeg.
 
 ~~~bash
-$nez lpeg -p math.nez > math.lua
+$ nez lpeg -p math.nez > math.lua
 ~~~
+
+Or, 
+~~~bash
+$ nez lua -p math.nez > math.lua
+~~~
+
+#### Limitations:
+
+* No support for AST construction
+* No support for Symbol tables
 
 
 

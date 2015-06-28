@@ -6,7 +6,7 @@ layout: default
 
 # Nez : Open Grammar Language and Tools
 
-**Notice: public release is planned on August 1 2015. **
+> Notice: public release is planned on August 1 2015.
 
 ## What is Nez ?
 
@@ -23,14 +23,23 @@ Nez is a PEG-based parsing library and parser generator tools. Nez features are 
 * Runtime technology
   * Packrat parsing with sliding window
   * Grammar optimizers
- * Applications
+* Applications
   * Programming languages
   * Big "Text" Data Analysis
 * More importantly
   * Simple and (perhaps) easy to start now
 
-By the way, the name "Nez" comes from "Nezumi", a mouse in Japanese. This is a hommage to Packrat and Rats!. 
+> The name "Nez" comes from "Nezumi", a mouse in Japanese. This is a hommage to packrat parsing and Rats!. 
 
 ## What is Open Grammar?
 
+(TBA)
+
+## Bugs, Forums, Mailing Lists
+
+If you have found a bug, we appreciate that you report it [here](https://github.com/nez-peg/nez/issues). Also, there will be the nez-users google group available if you have any questions!
+
+## Authors
+
+* Kimio Kuramitsu (Yokohama National University)
  

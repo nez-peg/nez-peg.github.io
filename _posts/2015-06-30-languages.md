@@ -22,10 +22,14 @@ A = e
 
 ### Terminals
 
-* `'abc'` - match the exactly same string `'abc'`
-* `.` - match any single byte characters
-* `[A-Z]` -- match characters ranging from `'A'` to `'Z'`
-* `[Aa]` -- match either `'A'` or `'a'`
+`'abc'`
+: match the exactly same string `'abc'`
+`.`
+: match any single byte characters
+`[A-Z]`
+: match characters ranging from `'A'` to `'Z'`
+`[Aa]`
+: match either `'A'` or `'a'`
 
 ### NonTerminals
 
