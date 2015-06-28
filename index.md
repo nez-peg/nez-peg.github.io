@@ -4,6 +4,11 @@ layout: default
 
 ![logo](image/nez_logo.png){: class="logo-img"}
 
+Nez project is exploring open grammar languages and tools.
+
+
+
+
 Quick Start
 -----------
 
