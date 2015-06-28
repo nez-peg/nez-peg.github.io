@@ -36,11 +36,9 @@
           <div class="left-panel-off">
             Document
             {% for post in site.posts %}
-          </div>
-            {% if post.category == 'document' %}
           <div href="{{ post.url }}" class="left-small-panel">
-            {{ post.title }}
-            {% endif %}
+            {{ post.title }} {{ post.categories }}
+          </div>  
             {% endfor %}
           </div>
           <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
