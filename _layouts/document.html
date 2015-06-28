@@ -26,26 +26,28 @@
     </div>
     <div class="contents">
       <div class="left-bar">
-        <div class="left-logo">
-          <p class="large-font">Nez</p><a href="https://github.com/nez-peg/nez"><i class="fa fa-github large-font"></i>&nbsp;
-            Github</a>
-        </div>
         <div class="left-content">
-          <div href="/" class="left-panel">Overview</div>
-          <div href="/" class="left-panel">Download</div>
+          <div href="/" class="left-panel">Home</div>
           <div class="left-panel-off">
-            Document
+            Documentation
             {% for post in site.posts %}
+          </div>
           <div href="{{ post.url }}" class="left-small-panel">
             {{ post.title }}
-          </div>  
-            {% endfor %}
           </div>
+            {% endfor %}
           <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
+        </div>
+        <div class="left-logo">
+          <p class="large-font">Nez</p>
+          <a href="https://github.com/nez-peg/nez">
+            <i class="fa fa-github large-font"></i>&nbsp;Github</a>
         </div>
       </div>
       <div class="main-content">
-        <!--img.logo(src="./image/nez_llogo1080p.png", height="300px")-->{{content}}
+        {{content}}
+        <hr/>
+        Kimio Kuramitsu
       </div>
     </div>
   </body>
