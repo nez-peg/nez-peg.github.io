@@ -1,6 +1,5 @@
 ---
 layout: default
-![logo](image/nez_logo.png){: class="logo-img"}
 ---
 
 # Nez : Open Grammar Language and Tools
@@ -34,6 +33,10 @@ Nez is a PEG-based parsing library and parser generator tools. Nez features are 
 ## What is Open Grammar?
 
 (TBA)
+
+## Logo
+
+![logo](image/nez_logo.png){: class="logo-img"}
 
 ## Bugs, Forums, Mailing Lists
 
