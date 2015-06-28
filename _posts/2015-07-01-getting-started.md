@@ -18,13 +18,31 @@ sudo curl -O http://nez-peg.github.io/dist/nez.jar
 alias nez='java -jar /usr/local/lib/nez.jar'
 ~~~
 
-Now, you will try the nez command in your terminal. 
+Now, you will try the ~nez~ command in your terminal. 
 
-## Grammar
+~~~bash
+$ nez
+Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
+Copyright (c) 2014-2015, Nez project authors
+>>> 
 
-Nez grammar is stored in a `.nez` file.
+~~~
 
-Here is a simple sample of Nez grammar for basic mathematical operators. 
+`>>>` is a prompt to type in what you want to do. You will exit by enter Control-D. 
+
+## Grammar Specification
+
+Nez grammar is stored in a `.nez` file. 
+Before you learn how to specify a grammar, try the following sample grammars:
+
+*  The Nez.jar package contains several useful grammar files in `nez/lib/*`. 
+  * math.nez - a mathematical operator
+  * konoha.nez - a small and static scripting language
+  * json.nez - a syntax of JSON format
+  * xml.nez - a syntax of XML1.0 format
+*  Grammar repository (https://github.com/nez-peg/nez-sample).
+
+Here is an excerption of the `math.nez` file. 
 
 ~~~nez
 
@@ -89,18 +107,10 @@ format #Variable[0] `${text}`
 
 ~~~
 
-The Nez.jar package contains several useful grammar files in `nez/lib/*`. 
-
- * math.nez - a mathematical operator
- * konoha.nez - a small and static scripting language
- * json.nez - a syntax of JSON format
- * xml.nez - a syntax of XML1.0 format
- 
-You will find other grammar definitions at https://github.com/nez-peg/nez-sample .
 
 ## Invoking an Interactive Parser
 
-Execute the nez command by specifying a grammar file (e.g., `math.nez`) with the `-p` option.
+You can invoke an interactive parser by specifying a grammar file (e.g., `math.nez`) with the `-p` option.
 
 ~~~bash
 $ nez -p math.nez
@@ -110,9 +120,9 @@ Copyright (c) 2014-2015, Nez project authors
 
 ~~~
 
-`>>>` is a prompt to type in what you want to do. 
+### Parsing with NonTerminals
 
-You will evaluate the nonterminal `Expression` with your input string.
+Now, you can parse your input string with your specified nonterminal in `math.nez`. 
 
 ~~~
 >>> Expression 1+2*3
@@ -136,28 +146,12 @@ Formatted: (1 + (2 * 3))
    #Int['3']
 ]
 Formatted: ((1 * 2) + 3)
-
 ~~~
 
+Note that #T[..] is a AST representation that is parsed by Nez. The #-prefixed label is a tag to identify the meaning of the AST node. The AST node consists of either parsed string or the sequence of child AST nodes. 
+
+### Defining Productions
+
+You will define a new production in the interactive parser. 
 
 
-
-~~~nez
-
-File
-    = { (__ @SourceElement)* __ #Source }
-
-SINGLE_LINE_COMMENT
-    = '//' (!LINE_TERMINATOR? .)*
-SPACE
-    = [\t\v\f \u00A0\uFEFF]
-
-// Space including line terminator
-__
-    = (<block>SPACE+ / !LINE_TERMINATOR_SEQUENCE / COMMENT)*
-EOS
-    = __ '//'
-    / _ SINGLE_LINE_COMMENT? LINE_TERMINATOR_SEQUENCE
-    / _ "}"
-
-~~~
