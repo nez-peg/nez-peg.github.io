@@ -2,11 +2,13 @@
 layout: default
 ---
 
-![logo](image/nez_logo.png){: class="logo-img"}
+//![logo](image/nez_logo.png){: class="logo-img"}
 
-Nez : an Open Grammar Language and Tools
+# Nez : an Open Grammar Language and Tools
 
-# What is Nez ?
+(Public release is not yet)
+
+## What is Nez ?
 
 Nez is a PEG-based parsing library and parser generator. 
 
