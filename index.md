@@ -4,16 +4,28 @@ layout: default
 
 ![logo](image/nez_logo.png){: class="logo-img"}
 
-Nez project is exploring open grammar languages and tools.
+Nez : an Open Grammar Language and Tools
 
+# What is Nez ?
 
+Nez is a PEG-based parsing library and parser generator. 
 
+ * Open grammar
+ ** Parsing expression grammars
+ ** Declarative AST construction
+ ** Declarative context-sensitive extensions
+ * Parser generator
+ ** Grammar converters
+ ** Parser generators for multi platforms (including C, Java, and others)
+ ** Parser Interpreter (Parsing virtual machine)
+ * Efficienct
+ ** Packrat parsing with sliding window
+ ** Grammar optimizers
+ * Applications
+ ** Programming languages
+ ** Big "Text" Data Analysis
+ * More importantly,
+ ** Simple and (perhaps) easy to start 
 
-Quick Start
------------
-
-~~~bash
-cd /usr/local/lib
-sudo curl -O http://nez-peg.github.io/dist/nez.jar
-alias nez='java -jar /usr/local/lib/nez.jar'
-~~~
+# Who made Nez
+ 
