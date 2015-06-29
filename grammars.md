@@ -1,10 +1,10 @@
 ---
 layout: default
-title: "Parser Generators"
+title: "Nez Grammar Repository"
 categories: [document]
 ---
 
-# Parser Generators
+# Nez Grammar Repository
 
 Here is a list of parser generators that are supported by Nez.
 
@@ -33,7 +33,6 @@ $ nez lpeg -p math.nez > math.lua
 ~~~
 
 Or,
-
 ~~~bash
 $ nez lua -p math.nez > math.lua
 ~~~
