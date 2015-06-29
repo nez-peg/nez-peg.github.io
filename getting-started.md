@@ -12,10 +12,6 @@ MacOS X or other Unix-based operating system.
 
 ## Installation
 
-~~~ shell
-
-~~~
-
 Here is a very quick installation.
 
 ~~~ bash
@@ -47,8 +43,8 @@ why don't you try sample grammars that Nez project has provided:
 * math.nez - a mathematical operator
 * json.nez - a syntax of JSON format
 * xml.nez - a syntax of XML1.0 format
-* konoha.nez - a small and static scripting language
-* others - avaliable on Grammar repository https://github.com/nez-peg/nez-sample.
+* js.nez - JavaScript grammar
+* others - avaliable on [Grammar repository](https://github.com/nez-peg/nez-sample).
 
 Here is an excerption of the `math.nez` file.
 
@@ -110,14 +106,12 @@ Copyright (c) 2014-2015, Nez project authors
 ~~~
 
 > Several grammars such as `math.nez` are contained in the nez.jar package.
-> Without any settings, you can use these files as the default search path.
-
-
+> Without any settings, you can load these files.
 
 ## Parsing with NonTerminals
 
 You can parse your input string with a nonterminal defined in `math.nez`.
-Let's try `Expression` nonterminal as follows:
+Let's try `Expression` nonterminal to parse something.
 
 ~~~
 >>> Expression 1+2*3
@@ -147,12 +141,33 @@ Let's try `Expression` nonterminal as follows:
 
 ## Defining Productions
 
-Now we will turn to how to define a new production in the interactive parser.
+Now we will turn to how to define a new production.
+Defining a production is as simple as the variable declaration.
+
 
 ~~~
->>> DIGIT = [0-9]
+>>> NUM = [0-9]+
 ...
 
->>> DIGIT 1
+~~~
+
+> Since the Nez parser accepts multiple lines (`...`) for your definition.
+> Enter twice if you want to complete your definition.
+
+
+Now, you will parse with the newly defined nonterminal `NUM`.
 
 ~~~
+>>> NUM 123
+
+#token['123']
+
+~~~
+
+> `#token` is a default tag for a parsed string.
+> You are free to transform a tree structure with AST constructors
+> If you want to know more about PEGs, visit "Learning PEGs with Nez."
+
+## Generating Parsers
+
+(TBA)

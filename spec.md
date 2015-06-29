@@ -1,5 +1,5 @@
 ---
-layout: document
+layout: default
 title: "Nez Language Specification"
 categories: [document]
 ---
@@ -26,40 +26,34 @@ A = e
 
 ### Terminals
 
-`'abc'`
-: match the exactly same string `'abc'`
-
-`.`
-: match any single byte characters
-
-`[A-Z]`
-: match characters ranging from `'A'` to `'Z'`
-
-`[Aa]`
-: match either `'A'` or `'a'`
+* `'abc'` - match the exactly same string `'abc'`
+* `.` - match any single byte characters
+* `[A-Z]` - match characters ranging from `'A'` to `'Z'`
+* `[Aa]` - match either `'A'` or `'a'`
 
 ### NonTerminals
 
 * NonTerminal
-* "string"
+* `"string"`
 
 ### PEG operators
 
-* `e1 e2`
-* `e2 / e2`
-* `e?`
-* `e*`
-* `e+`
-* `!e`
-* `&e`
+* `e1 e2`- sequence
+* `e2 / e2` - choice
+* `e?` - option
+* `e*` - repetition
+* `e+` - one more repetition (`e e*`)
+* `&e` - and lookahead predicate
+* `!e` - not lookahead predicate
 
-### AST constructors
+### AST constructors {#ast}
 
-{e}
-@e
-{@ e}
-@[e]
-#t
-`value`
+* `{e}` - creating a new node with capturing a substring that is matched with `e`.
+* `@e` - linking a child node that is constructed with `e` to the left node
+* `{@ e}`
+* `#Tag` - tagging `#Tag` to the left node
+* `str` - replacing a captured string of the left node with the specified string `str`
 
-### AST constructors
+### Symbol table {#symbols}
+
+(TBA)
