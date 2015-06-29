@@ -34,24 +34,23 @@ Copyright (c) 2014-2015, Nez project authors
 
 ~~~
 
-> `>>>` is a prompt to type in what you want to do.
+> `>>>` is a prompt of the Nez interactive parser.
 > You will exit by enter Control-D.
 {:.information}
 
-## Checking Grammar File
+## Grammar Files
 
 Nez grammar is specified with Nez language and stored in a `.nez` file.
-Before you learn how to [specify a grammar]("/spec.html"),
-try the following sample grammars:
+Before you learn how to [specify a grammar with Nez](/spec.html),
+why don't you try sample grammars that Nez project has provided:
 
-*  The nez.jar package contains several useful grammar files in `nez/lib/*`.
-  * math.nez - a mathematical operator
-  * konoha.nez - a small and static scripting language
-  * json.nez - a syntax of JSON format
-  * xml.nez - a syntax of XML1.0 format
-*  Grammar repository (https://github.com/nez-peg/nez-sample).
+* math.nez - a mathematical operator
+* json.nez - a syntax of JSON format
+* xml.nez - a syntax of XML1.0 format
+* konoha.nez - a small and static scripting language
+* others - avaliable on Grammar repository https://github.com/nez-peg/nez-sample.
 
-Here is a `math.nez` file.
+Here is an excerption of the `math.nez` file.
 
 ~~~ nez
 
@@ -95,30 +94,12 @@ Value
 	/ { [A-Za-z0-9_]+ #Variable } _
 	/ "(" Expression ")"
 
-/* Example */
-
-example Expression 1
-example Expression 1+A*3
-
-example Expression '''
-1*2+3
-'''
-
-/* Formats */
-
-format #Add[2]      `($[0] + $[1])`
-format #Sub[2]      `($[0] - $[1])`
-format #Mul[2]      `($[0] * $[1])`
-format #Div[2]      `($[0] / $[1])`
-format #Mod[2]      `($[0] % $[1])`
-format #Int[0]      `${text}`
-format #Variable[0] `${text}`
-
 ~~~
 
 ## Invoking Interactive Parser
 
-You can invoke an interactive parser by specifying a grammar file (e.g., `math.nez`) with the `-p` option.
+The Nez interactive parser is a good starting point to try Nez.
+Use `-p` option to specify a grammar file that you want to load.
 
 ~~~ bash
 $ nez -p math.nez
@@ -127,6 +108,11 @@ Copyright (c) 2014-2015, Nez project authors
 >>>
 
 ~~~
+
+> Several grammars such as `math.nez` are contained in the nez.jar package.
+> Without any settings, you can use these files as the default search path.
+
+
 
 ## Parsing with NonTerminals
 
@@ -155,9 +141,18 @@ Let's try `Expression` nonterminal as follows:
 ]
 ~~~
 
-> Note that `#T[..]`` is an AST representation that is parsed by Nez. The #-prefixed label is a tag to identify the meaning of the AST node. The AST node consists of either a parsed string or a sequence of child AST nodes.
-
+> Note that `#T[..]` is an AST representation that is parsed by Nez.
+> The #-prefixed label is a tag to identify the meaning of the AST node.
+> The AST node consists of either a parsed string or a sequence of child AST nodes.
 
 ## Defining Productions
 
-You will define a new production in the interactive parser.
+Now we will turn to how to define a new production in the interactive parser.
+
+~~~
+>>> DIGIT = [0-9]
+...
+
+>>> DIGIT 1
+
+~~~
