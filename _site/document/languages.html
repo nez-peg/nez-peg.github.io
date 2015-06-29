@@ -59,7 +59,61 @@
         </div>
       </div>
       <div class="main-content">
-        <h2 id="document">Document</h2>
+        <h1 id="nez-language-specification-version-10">Nez Language Specification (Version 1.0)</h1>
+
+<h2 id="grammars">Grammars</h2>
+
+<h3 id="productions">Productions</h3>
+
+<p>A production is a mapping of a nonterminal name <code>A</code> into an parsing expression <code>e</code>.</p>
+
+<pre><code class="language-nez">A = e
+</code></pre>
+
+<h2 id="expressions">Expressions</h2>
+
+<h3 id="terminals">Terminals</h3>
+
+<dl>
+  <dt><code>'abc'</code></dt>
+  <dd>match the exactly same string <code>'abc'</code>
+<code>.</code></dd>
+  <dd>match any single byte characters
+<code>[A-Z]</code></dd>
+  <dd>match characters ranging from <code>'A'</code> to <code>'Z'</code>
+<code>[Aa]</code></dd>
+  <dd>match either <code>'A'</code> or <code>'a'</code></dd>
+</dl>
+
+<h3 id="nonterminals">NonTerminals</h3>
+
+<ul>
+  <li>NonTerminal</li>
+  <li>“string”</li>
+</ul>
+
+<h3 id="peg-operators">PEG operators</h3>
+
+<ul>
+  <li><code>e1 e2</code></li>
+  <li><code>e2 / e2</code></li>
+  <li><code>e?</code></li>
+  <li><code>e*</code></li>
+  <li><code>e+</code></li>
+  <li><code>!e</code></li>
+  <li><code>&amp;e</code></li>
+</ul>
+
+<h3 id="ast-constructors">AST constructors</h3>
+
+<p>{e}
+@e
+{@ e}
+@[e]
+#t
+<code>value</code></p>
+
+<h3 id="ast-constructors-1">AST constructors</h3>
 
       </div>
     </div>

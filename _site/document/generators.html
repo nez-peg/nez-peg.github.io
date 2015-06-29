@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <title>Nez</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,37 +31,76 @@
             Github</a>
         </div>
         <div class="left-content">
-          <div href="/" class="left-panel">Overview</div>
+          <div href="/" class="left-panel">Home</div>
           <div class="left-panel-off">
-            Document
+            Documentation
             
           </div>
           <div href="/document/getting-started.html" class="left-small-panel">
             Getting Started
             
           </div>
-          <div href="/document/apis.html" class="left-small-panel">
-            APIs
+          <div href="/document/languages.html" class="left-small-panel">
+            Language Specification
             
           </div>
-          <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
+          <div href="/document/generators.html" class="left-small-panel">
+            Parser Generators
+            
+          </div>
+          <div href="/project/DTDs.html" class="left-small-panel">
+            XML Validation
+            
+          </div>
+          <div href="/document/publications.html" class="left-small-panel">
+            Publictions
+            
+          </div>
         </div>
       </div>
       <div class="main-content">
-        <!--img.logo(src="./image/nez_llogo1080p.png", height="300px")--><h2 id="apis">APIs</h2>
+        <h1 id="parser-generators">Parser Generators</h1>
 
-<p>hogehoge</p>
+<p>Here is a list of parser generators that are supported by Nez.</p>
 
-<pre><code class="language-typescript">
-var Human = function (){
-  this.prototype.name = "taro";
-  this.prototype.age = 10;
-  return Human;
-}
+<ul>
+  <li>[CNez[(#CNez)</li>
+  <li><a href="#LPeg">LPeg convertor</a></li>
+</ul>
 
-var taro = new Human();
+<h2 id="cnez">CNez</h2>
 
+<p>CNez is a parser generator for C/C++.</p>
+
+<pre><code class="language-bash">$ nez cnez -p math.nez &gt; math.c
 </code></pre>
+
+<h4 id="limitations">Limitations:</h4>
+
+<ul>
+  <li>No support for AST construction</li>
+  <li>…</li>
+</ul>
+
+<h2 id="lpeg">LPeg convertor</h2>
+
+<p>LPeg converter is a grammar converter that generates a grammar file written in LPeg.</p>
+
+<pre><code class="language-bash">$ nez lpeg -p math.nez &gt; math.lua
+</code></pre>
+
+<p>Or, 
+~~~bash
+$ nez lua -p math.nez &gt; math.lua
+~~~</p>
+
+<h4 id="limitations-1">Limitations:</h4>
+
+<ul>
+  <li>No support for AST construction</li>
+  <li>No support for Symbol tables</li>
+</ul>
+
 
       </div>
     </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <title>Nez</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,44 +31,180 @@
             Github</a>
         </div>
         <div class="left-content">
-          <div href="/" class="left-panel">Overview</div>
+          <div href="/" class="left-panel">Home</div>
           <div class="left-panel-off">
-            Document
+            Documentation
             
           </div>
           <div href="/document/getting-started.html" class="left-small-panel">
             Getting Started
             
           </div>
-          <div href="/document/apis.html" class="left-small-panel">
-            APIs
+          <div href="/document/languages.html" class="left-small-panel">
+            Language Specification
             
           </div>
-          <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
+          <div href="/document/generators.html" class="left-small-panel">
+            Parser Generators
+            
+          </div>
+          <div href="/project/DTDs.html" class="left-small-panel">
+            XML Validation
+            
+          </div>
+          <div href="/document/publications.html" class="left-small-panel">
+            Publictions
+            
+          </div>
         </div>
       </div>
       <div class="main-content">
-        <!--img.logo(src="./image/nez_llogo1080p.png", height="300px")--><h2 id="getting-started">Getting Started</h2>
+        <h1 id="getting-started">Getting Started</h1>
 
-<pre><code class="language-nez">
-File
-    = { (__ @SourceElement)* __ #Source }
+<h2 id="installation">Installation</h2>
 
-SINGLE_LINE_COMMENT
-    = '//' (!LINE_TERMINATOR? .)*
-SPACE
-    = [\t\v\f \u00A0\uFEFF]
-// Space including line terminator
-__
-    [example: /* comment*/[]]
-    [example: //comment]
-    = (&lt;block&gt;SPACE+ / !LINE_TERMINATOR_SEQUENCE / COMMENT)*
-EOS
-    = __ '//'
-    / _ SINGLE_LINE_COMMENT? LINE_TERMINATOR_SEQUENCE
-    / _ "}"
+<p>An official installation is to be announced soon.</p>
+
+<p>Here is a very quick (unofficial) installation.</p>
+
+<pre><code class="language-bash">cd /usr/local/lib
+sudo curl -O http://nez-peg.github.io/dist/nez.jar
+alias nez='java -jar /usr/local/lib/nez.jar'
+</code></pre>
+
+<p>Now, you will try the ~nez~ command in your terminal.</p>
+
+<pre><code class="language-bash">$ nez
+Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
+Copyright (c) 2014-2015, Nez project authors
+&gt;&gt;&gt; 
 
 </code></pre>
+
+<p><code>&gt;&gt;&gt;</code> is a prompt to type in what you want to do. You will exit by enter Control-D.</p>
+
+<h2 id="grammar-specification">Grammar Specification</h2>
+
+<p>Nez grammar is stored in a <code>.nez</code> file. 
+Before you learn how to specify a grammar, try the following sample grammars:</p>
+
+<ul>
+  <li>The Nez.jar package contains several useful grammar files in <code>nez/lib/*</code>.</li>
+  <li>math.nez - a mathematical operator</li>
+  <li>konoha.nez - a small and static scripting language</li>
+  <li>json.nez - a syntax of JSON format</li>
+  <li>xml.nez - a syntax of XML1.0 format</li>
+  <li>Grammar repository (https://github.com/nez-peg/nez-sample).</li>
+</ul>
+
+<p>Here is an excerption of the <code>math.nez</code> file.</p>
+
+<pre><code class="language-nez">
+/**
+ * math.nez: Basic mathematical operator 
+ * author: Kimio Kuramitsu
+ */
+
+File
+	= Expression .*
+
+/* Code Layout */
+
+_
+	= S*
+
+S
+	= [ \t]
+
+"+"     = '+' _
+"-"     = '-' _
+"*"     = '*' _
+"/"     = '/' _
+"%"     = '%' _
+"("     = '(' _
+")"     = ')' _
+
+/* Expression */
+
+public Expression
+	= Sum
+
+Sum
+	= Product {@ ( "+" #Add / "-" #Sub ) @Product }*
+
+Product
+	= Value {@ ( "*" #Mul / "/" #Div / "%" #Mod ) @Value }*
+
+Value
+	= { [0-9]+ #Int } _
+	/ { [A-Za-z0-9_]+ #Variable } _
+	/ "(" Expression ")"
+
+/* Example */
+
+example Expression 1
+example Expression 1+A*3
+
+example Expression '''
+1*2+3
+'''
+
+/* Formats */
+
+format #Add[2]      `($[0] + $[1])`
+format #Sub[2]      `($[0] - $[1])`
+format #Mul[2]      `($[0] * $[1])`
+format #Div[2]      `($[0] / $[1])`
+format #Mod[2]      `($[0] % $[1])`
+format #Int[0]      `${text}`
+format #Variable[0] `${text}`
+
+</code></pre>
+
+<h2 id="invoking-an-interactive-parser">Invoking an Interactive Parser</h2>
+
+<p>You can invoke an interactive parser by specifying a grammar file (e.g., <code>math.nez</code>) with the <code>-p</code> option.</p>
+
+<pre><code class="language-bash">$ nez -p math.nez
+Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
+Copyright (c) 2014-2015, Nez project authors
+&gt;&gt;&gt; 
+
+</code></pre>
+
+<h3 id="parsing-with-nonterminals">Parsing with NonTerminals</h3>
+
+<p>Now, you can parse your input string with your specified nonterminal in <code>math.nez</code>.</p>
+
+<pre><code>&gt;&gt;&gt; Expression 1+2*3
+
+#Add[
+   #Int['1']
+   #Mul[
+      #Int['2']
+      #Int['3']
+   ]
+]
+Formatted: (1 + (2 * 3))
+
+&gt;&gt;&gt; Expression 1*2+3
+
+#Add[
+   #Mul[
+      #Int['1']
+      #Int['2']
+   ]
+   #Int['3']
+]
+Formatted: ((1 * 2) + 3)
+</code></pre>
+
+<p>Note that #T[..] is a AST representation that is parsed by Nez. The #-prefixed label is a tag to identify the meaning of the AST node. The AST node consists of either parsed string or the sequence of child AST nodes.</p>
+
+<h3 id="defining-productions">Defining Productions</h3>
+
+<p>You will define a new production in the interactive parser.</p>
+
 
       </div>
     </div>
