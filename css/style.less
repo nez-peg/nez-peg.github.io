@@ -1,4 +1,14 @@
 @background_color: #EDEDED;
+@main_color: #000000;
+@left_backcolor: #2e2e2e;
+@left_color: #c8c8c8;
+@left_hov_backcolor: #4c4c4c;
+@left_hov_color: #f6f6f6;
+@left_sel_backcolor: #4c4c4c;
+@left_sel_color: #f5efff;
+@left_logo_backcolor: #714AA0;
+@left_logo_color: #ffffff;
+@largefont_color: #604A7B;
 
 html {
   height: 100%;
@@ -10,20 +20,19 @@ body {
   height: 100%;
   width: 100%;
   background-color: @background_color;
-  /*background-color: #e2e2e2;*/
 }
 
 .left-bar {
-  color: #ffffff;
-  background-color: #2e2e2e;
+  color: @left_logo_color;
+  background-color: @left_backcolor;
 }
 
 .left-logo {
-  background-color: #714AA0;
+  background-color: @left_logo_backcolor;
 }
 
 .left-logo > a {
-  color: #ffffff;
+  color: @left_logo_color;
 }
 
 /*.left-content {
@@ -32,8 +41,8 @@ body {
 }*/
 
 .left-panel, .left-panel-off, .left-small-panel {
-  background-color: #2e2e2e;
-  color: #c8c8c8;
+  background-color: @left_backcolor;
+  color: @left_color;
   cursor: pointer;
   transition: all .08s cubic-bezier(.4,0,.2,1);
 }
@@ -129,8 +138,8 @@ body {
 }
 
 .left-panel:hover, .left-small-panel:hover {
-  background-color: #4c4c4c;
-  color: #f6f6f6;
+  background-color: @left_hov_backcolor;
+  color: @left_hov_color;
 }
 
 @media (min-width: 1281px) {
@@ -142,8 +151,6 @@ body {
   }
   .main-content  {
     width: 980px;
-    color: #000000;
-    background-color: @background_color;
     padding: 15px 100px;
   }
   .logo-img {
@@ -160,8 +167,6 @@ body {
   }
   .main-content {
     width: calc(100% - 300px);
-    color: #000000;
-    background-color: @background_color;
     padding: 15px 50px;
   }
   .logo-img {
@@ -181,8 +186,6 @@ body {
   }
   .main-content {
     width: 100%;
-    color: #000000;
-    background-color: @background_color;
     padding: 15px 50px;
   }
 
@@ -198,14 +201,16 @@ body {
   position: absolute;
   left: 300px;
   min-height: 100%;
+  color: @main_color;
+  background-color: @background_color;
 }
 
 .contents {
 }
 
 .selected, .selected:hover {
-  background-color: #4c4c4c;
-  color: #f5efff;
+  background-color: @left_sel_backcolor;
+  color: @left_sel_color;
 }
 
 .large-font {
@@ -213,5 +218,5 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #604A7B;
+  color: @largefont_color;
 }

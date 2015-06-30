@@ -7,14 +7,13 @@ body {
   height: 100%;
   width: 100%;
   background-color: #ededed;
-  /*background-color: #e2e2e2;*/
 }
 .left-bar {
   color: #ffffff;
   background-color: #2e2e2e;
 }
 .left-logo {
-  background-color: #714AA0;
+  background-color: #714aa0;
 }
 .left-logo > a {
   color: #ffffff;
@@ -128,8 +127,6 @@ body {
   }
   .main-content {
     width: 980px;
-    color: #000000;
-    background-color: #ededed;
     padding: 15px 100px;
   }
   .logo-img {
@@ -146,8 +143,6 @@ body {
   }
   .main-content {
     width: calc(-200%);
-    color: #000000;
-    background-color: #ededed;
     padding: 15px 50px;
   }
   .logo-img {
@@ -166,8 +161,6 @@ body {
   }
   .main-content {
     width: 100%;
-    color: #000000;
-    background-color: #ededed;
     padding: 15px 50px;
   }
   .logo-img {
@@ -181,6 +174,8 @@ body {
   position: absolute;
   left: 300px;
   min-height: 100%;
+  color: #000000;
+  background-color: #ededed;
 }
 .selected,
 .selected:hover {
@@ -196,5 +191,5 @@ h3,
 h4,
 h5,
 h6 {
-  color: #604A7B;
+  color: #604a7b;
 }
