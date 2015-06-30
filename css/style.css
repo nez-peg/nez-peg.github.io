@@ -1,11 +1,13 @@
 html {
   height: 100%;
   width: 100%;
+  background-color: #EDEDED;
 }
 
 body {
   height: 100%;
   width: 100%;
+  background-color: #EDEDED;
   /*background-color: #e2e2e2;*/
 }
 
@@ -192,8 +194,12 @@ body {
 
 .main-content {
   float: right;
-  position: relative;
+  position: absolute;
+  left: 300px;
   min-height: 100%;
+}
+
+.contents {
 }
 
 .selected, .selected:hover {

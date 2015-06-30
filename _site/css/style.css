@@ -1,16 +1,17 @@
 html {
   height: 100%;
   width: 100%;
+  background-color: #EDEDED;
 }
 
 body {
   height: 100%;
   width: 100%;
+  background-color: #EDEDED;
   /*background-color: #e2e2e2;*/
 }
 
 .left-bar {
-  overflow: scroll;
   color: #ffffff;
   background-color: #2e2e2e;
 }
@@ -193,8 +194,12 @@ body {
 
 .main-content {
   float: right;
-  position: relative;
+  position: absolute;
+  left: 300px;
   min-height: 100%;
+}
+
+.contents {
 }
 
 .selected, .selected:hover {
