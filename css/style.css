@@ -1,19 +1,21 @@
 html {
   height: 100%;
   width: 100%;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 body {
   height: 100%;
   width: 100%;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 .left-bar {
   color: #ffffff;
-  background-color: #2e2e2e;
+  background-color: #eeebf3;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.14), 4px 0 12px rgba(0, 0, 0, 0.28);
+  z-index: 666;
 }
 .left-logo {
-  background-color: #714aa0;
+  background-color: #604a7b;
 }
 .left-logo > a {
   color: #ffffff;
@@ -25,8 +27,8 @@ body {
 .left-panel,
 .left-panel-off,
 .left-small-panel {
-  background-color: #2e2e2e;
-  color: #c8c8c8;
+  background-color: #eeebf3;
+  color: #000000;
   cursor: pointer;
   transition: all 0.08s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -115,8 +117,8 @@ body {
 }
 .left-panel:hover,
 .left-small-panel:hover {
-  background-color: #4c4c4c;
-  color: #f6f6f6;
+  background-color: #d4cbe0;
+  color: #000000;
 }
 @media (min-width: 1281px) {
   .contents {
@@ -175,12 +177,12 @@ body {
   left: 300px;
   min-height: 100%;
   color: #000000;
-  background-color: #ededed;
+  background-color: #ffffff;
 }
 .selected,
 .selected:hover {
-  background-color: #4c4c4c;
-  color: #f5efff;
+  background-color: #d4cbe0;
+  color: #000000;
 }
 .large-font {
   font-size: 24px;

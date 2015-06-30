@@ -1,13 +1,15 @@
 //out:./style.css
-@background_color: #EDEDED;
+@nez_color: #604A7B;
+@moji: #000000;
+@background_color: #ffffff;
 @main_color: #000000;
-@left_backcolor: #2e2e2e;
-@left_color: #c8c8c8;
-@left_hov_backcolor: #4c4c4c;
-@left_hov_color: #f6f6f6;
-@left_sel_backcolor: #4c4c4c;
-@left_sel_color: #f5efff;
-@left_logo_backcolor: #714AA0;
+@left_backcolor: lighten(@nez_color, 55%);
+@left_color: @moji;
+@left_hov_backcolor: darken(@left_backcolor, 10%);
+@left_hov_color: @moji;
+@left_sel_backcolor: darken(@left_backcolor, 10%);
+@left_sel_color: @moji;
+@left_logo_backcolor: @nez_color;
 @left_logo_color: #ffffff;
 @largefont_color: #604A7B;
 
@@ -26,6 +28,8 @@ body {
 .left-bar {
   color: @left_logo_color;
   background-color: @left_backcolor;
+  box-shadow: 0 0 6px rgba(0,0,0,0.14), 4px 0 12px rgba(0,0,0,0.28);
+  z-index: 666;
 }
 
 .left-logo {
