@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nez</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="./vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./vendor/highlight/styles/github.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+  </head>
+  <body>
+    <div class="js-loader">
+      <script type="text/javascript" src="./vendor/jquery/jquery.min.js"></script>
+      <script type="text/javascript" src="./vendor/bootstrap/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="./vendor/jquery/jquery.tmpl.min.js"></script>
+      <script type="text/javascript" src="./vendor/highlight/highlight.pack.js"></script>
+      <script type="text/javascript" src="./js/index.js"></script>
+      <script type="text/javascript">
+        var Config = {};
+        $(function() {
+          Config.basePath = "http://nez-peg.github.io";
+        })
+      </script>
+    </div>
+    <div class="contents">
+      <div class="left-bar">
+        <div class="left-logo">
+          <p class="large-font">Nez</p>
+          <a href="https://github.com/nez-peg/nez">
+            <i class="fa fa-github large-font"></i>&nbsp;Github</a>
+        </div>
+        <div class="left-content">
+          <div href="/" class="left-panel selected">Home</div>
+          <div href="/getting-started.html" class="left-panel">Documentation</div>
+          <div href="/getting-started.html" class="left-small-panel">Getting Started</div>
+          <div href="/spec.html" class="left-small-panel">Language Specification</div>
+          <div href="/generators.html" class="left-small-panel">Parser Generators</div>
+          <div href="/grammars.html" class="left-small-panel">Grammars</div>
+          <div href="/projects.html" class="left-panel">Project</div>
+          <div href="/publications.html" class="left-panel">Publication</div>
+          <div href="http://www.ubicg.ynu.ac.jp/nez/playground/" class="left-panel">Playground</div>
+        </div>
+      </div>
+      <div class="main-content">
+        <h1 id="getting-started">Getting Started</h1>
+
+<p>For this introduction we assume that you have already installed java8 (jre) on
+MacOS X or other Unix-based operating system.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Here is a very quick installation.</p>
+
+<pre><code class="language-bash">cd /usr/local/lib
+sudo curl -O http://nez-peg.github.io/dist/nez.jar
+alias nez='java -jar /usr/local/lib/nez.jar'
+</code></pre>
+
+<p>Now, you will try the <code>nez</code> command in your terminal.</p>
+
+<pre><code class="language-bash">$ nez
+Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
+Copyright (c) 2014-2015, Nez project authors
+&gt;&gt;&gt;
+
+</code></pre>
+
+<blockquote class="information">
+  <p><code>&gt;&gt;&gt;</code> is a prompt of the Nez interactive parser.
+You will exit by enter Control-D.</p>
+</blockquote>
+
+<h2 id="grammar-files">Grammar Files</h2>
+
+<p>Nez grammar is specified with Nez language and stored in a <code>.nez</code> file.
+Before you learn how to <a href="/spec.html">specify a grammar with Nez</a>,
+why don’t you try sample grammars that Nez project has provided:</p>
+
+<ul>
+  <li>math.nez - a mathematical operator</li>
+  <li>json.nez - a syntax of JSON format</li>
+  <li>xml.nez - a syntax of XML1.0 format</li>
+  <li>js.nez - JavaScript grammar</li>
+  <li>others - avaliable on <a href="https://github.com/nez-peg/nez-sample">Grammar repository</a>.</li>
+</ul>
+
+<p>Here is an excerption of the <code>math.nez</code> file.</p>
+
+<pre><code class="language-nez">
+/**
+ * math.nez: Basic mathematical operator
+ * author: Kimio Kuramitsu
+ */
+
+File
+	= Expression .*
+
+/* Code Layout */
+
+_
+	= S*
+
+S
+	= [ \t]
+
+"+"     = '+' _
+"-"     = '-' _
+"*"     = '*' _
+"/"     = '/' _
+"%"     = '%' _
+"("     = '(' _
+")"     = ')' _
+
+/* Expression */
+
+public Expression
+	= Sum
+
+Sum
+	= Product {@ ( "+" #Add / "-" #Sub ) @Product }*
+
+Product
+	= Value {@ ( "*" #Mul / "/" #Div / "%" #Mod ) @Value }*
+
+Value
+	= { [0-9]+ #Int } _
+	/ { [A-Za-z0-9_]+ #Variable } _
+	/ "(" Expression ")"
+
+</code></pre>
+
+<h2 id="invoking-interactive-parser">Invoking Interactive Parser</h2>
+
+<p>The Nez interactive parser is a good starting point to try Nez.
+Use <code>-p</code> option to specify a grammar file that you want to load.</p>
+
+<pre><code class="language-bash">$ nez -p math.nez
+Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
+Copyright (c) 2014-2015, Nez project authors
+&gt;&gt;&gt;
+
+</code></pre>
+
+<blockquote>
+  <p>Several grammars such as <code>math.nez</code> are contained in the nez.jar package.
+Without any settings, you can load these files.</p>
+</blockquote>
+
+<h2 id="parsing-with-nonterminals">Parsing with NonTerminals</h2>
+
+<p>You can parse your input string with a nonterminal defined in <code>math.nez</code>.
+Let’s try <code>Expression</code> nonterminal to parse something.</p>
+
+<pre><code>&gt;&gt;&gt; Expression 1+2*3
+
+#Add[
+   #Int['1']
+   #Mul[
+      #Int['2']
+      #Int['3']
+   ]
+]
+
+&gt;&gt;&gt; Expression 1*2+3
+
+#Add[
+   #Mul[
+      #Int['1']
+      #Int['2']
+   ]
+   #Int['3']
+]
+</code></pre>
+
+<blockquote>
+  <p>Note that <code>#T[..]</code> is an AST representation that is parsed by Nez.
+The #-prefixed label is a tag to identify the meaning of the AST node.
+The AST node consists of either a parsed string or a sequence of child AST nodes.</p>
+</blockquote>
+
+<h2 id="defining-productions">Defining Productions</h2>
+
+<p>Now we will turn to how to define a new production.
+Defining a production is as simple as the variable declaration.</p>
+
+<pre><code>&gt;&gt;&gt; NUM = [0-9]+
+...
+
+</code></pre>
+
+<blockquote>
+  <p>Since the Nez parser accepts multiple lines (<code>...</code>) for your definition.
+Enter twice if you want to complete your definition.</p>
+</blockquote>
+
+<p>Now, you will parse with the newly defined nonterminal <code>NUM</code>.</p>
+
+<pre><code>&gt;&gt;&gt; NUM 123
+
+#token['123']
+
+</code></pre>
+
+<blockquote>
+  <p><code>#token</code> is a default tag for a parsed string.
+You are free to transform a tree structure with AST constructors
+If you want to know more about PEGs, visit “Learning PEGs with Nez.”</p>
+</blockquote>
+
+<h2 id="generating-parsers">Generating Parsers</h2>
+
+<p>(TBA)</p>
+
+      </div>
+
+    </div>
+  </body>
+</html>

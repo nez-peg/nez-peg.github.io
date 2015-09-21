@@ -44,73 +44,65 @@
         </div>
       </div>
       <div class="main-content">
-        <h1 id="nez--open-grammar-language-and-tools">Nez : Open Grammar Language and Tools</h1>
+        <h1 id="nez-language-specification-version-10">Nez Language Specification (Version 1.0)</h1>
 
-<blockquote>
-  <p>Notice: public release is planned on August 1 2015.</p>
-</blockquote>
-
-<h2 id="what-is-nez-">What is Nez ?</h2>
-
-<p>Nez is a PEG-based parsing library and parser generator tools. Nez features are characterized by:</p>
+<h2 id="table-of-contents">Table of Contents</h2>
 
 <ul>
-  <li>Open grammar
-    <ul>
-      <li><a href="https://en.wikipedia.org/wiki/Parsing_expression_grammar">Parsing expression grammars</a></li>
-      <li>Declarative AST constructions</li>
-      <li>Declarative context-sensitive extensions</li>
-    </ul>
-  </li>
-  <li>Parser generator anywhere
-    <ul>
-      <li>Grammar converters</li>
-      <li>Parser generators for multi platforms (including C, Java, and others)</li>
-      <li>Parser interpreter (parsing virtual machine)</li>
-    </ul>
-  </li>
-  <li>Runtime technology
-    <ul>
-      <li>Packrat parsing with sliding window</li>
-      <li>Grammar optimizers</li>
-    </ul>
-  </li>
-  <li>Applications
-    <ul>
-      <li>Programming languages</li>
-      <li>Big “Text” Data Analysis</li>
-    </ul>
-  </li>
-  <li>More importantly
-    <ul>
-      <li>Simple</li>
-      <li>Easy to start now</li>
-    </ul>
-  </li>
+  <li><a href="#Production">Productions</a></li>
+  <li><a href="#Expression">Expressions</a></li>
 </ul>
 
-<blockquote>
-  <p>The name “Nez” comes from “Nezumi”, a mouse in Japanese. This is a hommage to packrat parsing and Rats!.</p>
-</blockquote>
+<h2 id="Production">Productions</h2>
 
-<h2 id="what-is-open-grammar">What is Open Grammar?</h2>
+<p>A production is a mapping of a nonterminal name <code>A</code> into an parsing expression <code>e</code>.</p>
+
+<pre><code class="language-nez">A = e
+</code></pre>
+
+<h2 id="Expression">Expressions</h2>
+
+<h3 id="terminals">Terminals</h3>
+
+<ul>
+  <li><code>'abc'</code> - match the exactly same string <code>'abc'</code></li>
+  <li><code>.</code> - match any single byte characters</li>
+  <li><code>[A-Z]</code> - match characters ranging from <code>'A'</code> to <code>'Z'</code></li>
+  <li><code>[Aa]</code> - match either <code>'A'</code> or <code>'a'</code></li>
+</ul>
+
+<h3 id="nonterminals">NonTerminals</h3>
+
+<ul>
+  <li>NonTerminal</li>
+  <li><code>"string"</code></li>
+</ul>
+
+<h3 id="peg-operators">PEG operators</h3>
+
+<ul>
+  <li><code>e1 e2</code>- sequence</li>
+  <li><code>e2 / e2</code> - choice</li>
+  <li><code>e?</code> - option</li>
+  <li><code>e*</code> - repetition</li>
+  <li><code>e+</code> - one more repetition (<code>e e*</code>)</li>
+  <li><code>&amp;e</code> - and lookahead predicate</li>
+  <li><code>!e</code> - not lookahead predicate</li>
+</ul>
+
+<h3 id="ast">AST constructors</h3>
+
+<ul>
+  <li><code>{e}</code> - creating a new node with capturing a substring that is matched with <code>e</code>.</li>
+  <li><code>@e</code> - linking a child node that is constructed with <code>e</code> to the left node</li>
+  <li><code>{@ e}</code></li>
+  <li><code>#Tag</code> - tagging <code>#Tag</code> to the left node</li>
+  <li><code>str</code> - replacing a captured string of the left node with the specified string <code>str</code></li>
+</ul>
+
+<h3 id="symbols">Symbol table</h3>
 
 <p>(TBA)</p>
-
-<h2 id="logo">Logo</h2>
-
-<p><img src="image/nez_logo.png" alt="logo" class="logo-img" /></p>
-
-<h2 id="bugs-forums-mailing-lists">Bugs, Forums, Mailing Lists</h2>
-
-<p>If you have found a bug, we appreciate that you report it <a href="https://github.com/nez-peg/nez/issues">here</a>.
-Also, there will be the nez-users google group available if you have any questions.</p>
-
-<h2 id="authors">Authors</h2>
-
-<ul>
-  <li>Kimio Kuramitsu (Yokohama National University)</li>
-</ul>
 
       </div>
 
