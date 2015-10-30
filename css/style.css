@@ -144,7 +144,7 @@ body {
     margin-left: auto;
   }
   .main-content {
-    width: calc(-200%);
+    width: calc(100% - 300px);
     padding: 15px 50px;
   }
   .logo-img {
@@ -156,7 +156,7 @@ body {
 }
 @media (max-width: 768px) {
   .contents {
-    height: calc(50%);
+    height: calc(100% - 50px);
     width: 100%;
     margin-right: auto;
     margin-left: auto;
