@@ -164,6 +164,8 @@ body {
   .main-content {
     width: 100%;
     padding: 15px 50px;
+    left: 0px;
+    top: 50px;
   }
   .logo-img {
     margin-left: auto;
