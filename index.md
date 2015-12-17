@@ -39,11 +39,11 @@ Quick Start
 
 To use the nez command, download the nez.jar file:
 
-```
+~~~
 $ curl -O http://nez-peg.github.io/download/nez.jar
 $ sudo nez.jar /usr/local/lib/nez.jar
 $ alias nez='java -jar /usr/local/lib/nez.jar'
-```
+~~~
 
 Also, it is good idea to put the alias setting in your `.bash_profile` or something like it. 
 
