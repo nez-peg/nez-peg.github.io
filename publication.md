@@ -1,6 +1,6 @@
 ---
-layout: document
-title: "Publictions"
+layout: default
+title: "Publiction"
 categories: [document]
 ---
 
