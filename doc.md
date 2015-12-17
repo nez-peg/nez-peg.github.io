@@ -11,6 +11,7 @@ categories: [document]
 * Tutorial 
 * Nez Language Specification
 * Nez Command Tools
+* FAQs
 
 ## Selected Publication
 
