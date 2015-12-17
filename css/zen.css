@@ -1,9 +1,9 @@
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary {display: block}
-[hidden] {     display: none}
+[hidden] { display: none}
 html {     font-size: 100%;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%}
-body {     font-size: 1em}
+body {     font-size: 1.1em}
 abbr {     border: 0;
     font-variant: normal}
 b,strong {     font-weight: bold}
@@ -36,7 +36,7 @@ html {     overflow-x: hidden}
 body {     margin: 1.5em 8px;
     background: #fff;
     color: #000;
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-family: font-family: Georgia, Times, "Times New Roman", serif;
     line-height: 1.5em
 }
 @media all and (min-width: 54.0625em) {     body {     margin: 1.5em 0}
@@ -54,8 +54,8 @@ body>header,body>section,body>footer,body>article {     max-width: 44em;
 @media all and (max-width: 30em) {     body {     font-size: 14px}
 }
 h1 {
-    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
-    font-weight: normal;
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    font-weight: bold;
     font-size: 1.5em;
     margin-top: 1em;
     margin-bottom: 1em}
@@ -64,11 +64,11 @@ h1 {
     cursor: default}
 }
 h2 {
-    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
-  -webkit-border-radius: 0.25em;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
+    -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
-    font-weight: normal;
+    font-weight: bold;
     font-size: 1.25em;
     padding: 0.6em 0.7em;
     margin: 1.2em -0.7em}
@@ -86,7 +86,7 @@ h2 {
     border-radius: 0}
 }
 h3,h4,h5,h6 {
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  font-family: Tahoma, Verdana, Segoe, sans-serif;
   font-weight: bold;
     font-size: 1em;
     margin-top: 1.5em;
@@ -96,8 +96,10 @@ h3.inline:after,h4.inline:after,h5.inline:after,h6.inline:after {     content: "
     font-weight: normal}
 p {     margin-top: 1.5em;
     margin-bottom: 1.5em}
-a {     text-decoration: none;
-    color: #103080}
+a {
+    //text-decoration: none;
+    color: #604a7b;
+}
 a:hover {     text-decoration: underline}
 cite:before {     content: "["}
 cite:after {     content: "]"}
@@ -107,7 +109,7 @@ nav {
     background: #e8e8e8;
     background-image: url("../image/nez_logo.png");
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    //background-attachment: fixed;
     background-position: right bottom;
     -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
