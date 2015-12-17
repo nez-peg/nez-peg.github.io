@@ -36,7 +36,7 @@ html {     overflow-x: hidden}
 body {     margin: 1.5em 8px;
     background: #fff;
     color: #000;
-    font-family: Baskerville, "Baskerville Old Face", "Goudy Old Style", Garamond, "Times New Roman", serif;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     line-height: 1.5em
 }
 @media all and (min-width: 54.0625em) {     body {     margin: 1.5em 0}
@@ -54,7 +54,7 @@ body>header,body>section,body>footer,body>article {     max-width: 44em;
 @media all and (max-width: 30em) {     body {     font-size: 14px}
 }
 h1 {
-    font-family: font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
     font-weight: normal;
     font-size: 1.5em;
     margin-top: 1em;
@@ -64,7 +64,7 @@ h1 {
     cursor: default}
 }
 h2 {
-    font-family: font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
   -webkit-border-radius: 0.25em;
     -moz-border-radius: 0.25em;
     border-radius: 0.25em;
@@ -86,7 +86,7 @@ h2 {
     border-radius: 0}
 }
 h3,h4,h5,h6 {
-  font-family: font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
   font-weight: bold;
     font-size: 1em;
     margin-top: 1.5em;
