@@ -7,167 +7,110 @@ categories: [document]
 # Getting Started
 
 
-For this introduction we assume that you have already installed java8 (jre) on
-MacOS X or other Unix-based operating system.
+For this introduction we assume that you have already installed java8 (jre) on MacOS X or other Unix-based operating system.
 
 ## Installation
 
-Here is a very quick installation.
+To use the nez command, download the `nez.jar` file:
 
-~~~ bash
-cd /usr/local/lib
-sudo curl -O http://nez-peg.github.io/dist/nez.jar
+~~~bash
+curl -O http://nez-peg.github.io/download/nez.jar
+sudo nez.jar /usr/local/lib/nez.jar
 alias nez='java -jar /usr/local/lib/nez.jar'
 ~~~
 
-Now, you will try the `nez` command in your terminal.
+Also, it is good idea to put the alias setting in your .bash_profile or something like it. 
 
-~~~ bash
+To test the installation, enter nez and check the version: 
+
+```
 $ nez
-Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
-Copyright (c) 2014-2015, Nez project authors
->>>
+Nez-1.0-886 (yokohama) on JvM-1.8.0_xx
+Usage: ..
+```
+
+
+## Nez Grammar at a Glance
+
+Nez grammar describes both syntactic constructs for the input and data structures for the output. 
+
+The syntactic part is based on parsing expression grammars. 
 
 ~~~
+Expression = Sum
+Sum = Product (( '+' / '-' ) Product )*
+Product = Value (( '*' #Mul / '/' #Div ) Value)*
+Value = [0-9]+ / '(' Expression ')'
+~~~
 
-> `>>>` is a prompt of the Nez interactive parser.
-> You will exit by enter Control-D.
-{:.information}
+The data structure part is additionally specified by PCRE-style capturing notations. 
 
-## Grammar Files
+~~~nez
+Expression = Sum
+Sum = Product {$left ( '+' #Add / '-' #Sub ) $right(Product) }*
+Product = Value {$left ( '*' #Mul / '/' #Div ) $right(Value) }*
+Value = { [0-9]+ #Int } / '(' Expression ')'
+~~~
+
+### Sample files
 
 Nez grammar is specified with Nez language and stored in a `.nez` file.
 Before you learn how to [specify a grammar with Nez](/spec.html),
 why don't you try sample grammars that Nez project has provided:
 
-* math.nez - a mathematical operator
-* json.nez - a syntax of JSON format
-* xml.nez - a syntax of XML1.0 format
-* js.nez - JavaScript grammar
-* others - avaliable on [Grammar repository](https://github.com/nez-peg/nez-sample).
+* `math.nez` - a mathematical operator
+* `json.nez` - a syntax of JSON format
+* `xml.nez` - a syntax of XML1.0 format
+* `js.nez` - JavaScript grammar
+* others - avaliable on [Grammar repository](https://github.com/nez-peg/nez-grammar).
 
-Here is an excerption of the `math.nez` file.
 
-~~~ nez
+## Generating a Parser
 
-/**
- * math.nez: Basic mathematical operator
- * author: Kimio Kuramitsu
- */
+Nez generates a parser in three ways: source generation, grammar translation, and dynamic parsers.
 
-File
-	= Expression .*
+### Parser source generation
 
-/* Code Layout */
+Since the Yacc invented in the early 1970s, the parser source code generation is a standard and practical approach to modern parser development. As with the Yacc, you can generate a parser from your grammar. 
 
-_
-	= S*
+Use the `nez parser` command:
 
-S
-	= [ \t]
-
-"+"     = '+' _
-"-"     = '-' _
-"*"     = '*' _
-"/"     = '/' _
-"%"     = '%' _
-"("     = '(' _
-")"     = ')' _
-
-/* Expression */
-
-public Expression
-	= Sum
-
-Sum
-	= Product {@ ( "+" #Add / "-" #Sub ) @Product }*
-
-Product
-	= Value {@ ( "*" #Mul / "/" #Div / "%" #Mod ) @Value }*
-
-Value
-	= { [0-9]+ #Int } _
-	/ { [A-Za-z0-9_]+ #Variable } _
-	/ "(" Expression ")"
-
+~~~bash
+nez parser -g math.nez
 ~~~
 
-## Invoking Interactive Parser
+The above command writes a parser written in C into a file with the name `math.c`. 
 
-The Nez interactive parser is a good starting point to try Nez.
-Use `-p` option to specify a grammar file that you want to load.
+Thanks to Nez's declarative notations, your grammar does not depend on any programming languages. You can switch other parser languages by specifying different formats. 
 
-~~~ bash
-$ nez -p math.nez
-Nez-0.9.0 (yokohama) on Java JVM-1.8.0_05
-Copyright (c) 2014-2015, Nez project authors
->>>
-
+~~~bash
+nez parser -g math.nez –format java
 ~~~
 
-> Several grammars such as `math.nez` are contained in the nez.jar package.
-> Without any settings, you can load these files.
+The supported parser languages are also extensible. For further information, check here. 
 
-## Parsing with NonTerminals
+### Grammar translation
 
-You can parse your input string with a nonterminal defined in `math.nez`.
-Let's try `Expression` nonterminal to parse something.
+Nez can translate your grammar into another PEG-dialects, such as PEGjs (JavaScript), PEGTL (C++), LPeg (Lua), etc. 
+To translate a grammar, use the `nez peg` command:
 
-~~~
->>> Expression 1+2*3
-
-#Add[
-   #Int['1']
-   #Mul[
-      #Int['2']
-      #Int['3']
-   ]
-]
-
->>> Expression 1*2+3
-
-#Add[
-   #Mul[
-      #Int['1']
-      #Int['2']
-   ]
-   #Int['3']
-]
+~~~bash
+nez peg -g pegjs --format pegjs
 ~~~
 
-> Note that `#T[..]` is an AST representation that is parsed by Nez.
-> The #-prefixed label is a tag to identify the meaning of the AST node.
-> The AST node consists of either a parsed string or a sequence of child AST nodes.
+The above command writes the translated grammar into a file with the name `math.pegjs`. As with in the parser source code generation, you can switch other grammar languages by specifying different formats. 
 
-## Defining Productions
+The translated grammar is available to generate a parser with third-parties rules. 
 
-Now we will turn to how to define a new production.
-Defining a production is as simple as the variable declaration.
+### Dynamic parsing
 
+Nez itself can parse the input by loading your grammar at runtime.
+This is a new style of parsing, which requires no source code generation.
 
-~~~
->>> NUM = [0-9]+
-...
+To parse an input, use the `nez parse` command with input files or `--input` specified inline text. 
 
-~~~
-
-> Since the Nez parser accepts multiple lines (`...`) for your definition.
-> Enter twice if you want to complete your definition.
-
-
-Now, you will parse with the newly defined nonterminal `NUM`.
-
-~~~
->>> NUM 123
-
-#token['123']
-
+~~~bash
+nez parse -g math.nez --input '1+2*3'
 ~~~
 
-> `#token` is a default tag for a parsed string.
-> You are free to transform a tree structure with AST constructors
-> If you want to know more about PEGs, visit "Learning PEGs with Nez."
 
-## Generating Parsers
-
-(TBA)

@@ -29,13 +29,10 @@ Nez is a PEG-based parsing library and parser generator tools. Nez features are 
     * Big "Text" Data Analysis
 
 Nez named after "nezumi", rats in Japanese. 
-As name implies, Nez has been inspired by packrat parsing and Rats! parser generator. 
-
-![logo](image/nez_logo.png){: class="logo-img"}
+As the name implies, Nez has been inspired by packrat parsing. 
 
 
-Quick Start
------------
+## Quick Start
 
 To use the nez command, download the nez.jar file:
 
@@ -47,13 +44,16 @@ $ alias nez='java -jar /usr/local/lib/nez.jar'
 
 Also, it is good idea to put the alias setting in your `.bash_profile` or something like it. 
 
-Let us begin with ["Getting Started"](getting_started.html)
+Let us begin with ["Getting Started"](getting-started.html)
+
 
 ## Development
+
 Nez is originally developed by [Kimio Kuramitsu](http://kuramitsulab.github.io/) with his graduate students in Yokohama National University, JAPAN. 
 
+
+
 You are welcome to contribute code. 
-Unless your contribution is really trivial you should get in touch with me first — this can prevent wasted effort on both sides. 
 You can send code both as a patch or a GitHub pull request.
 
 Note that Nez is still very much work in progress. 
