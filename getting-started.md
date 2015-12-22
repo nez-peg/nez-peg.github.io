@@ -23,13 +23,13 @@ Also, it is good idea to put the alias setting in your .bash_profile or somethin
 
 To test the installation, enter the `nez` command and check the version: 
 
-```
+~~~
 $ nez
 inez
 Nez-1.0-892 (beta) on Java JVM-1.8.0_05
 Copyright (c) 2014-2016, Kimio Kuramitsu and Nez project authors
 
-```
+~~~
 
 
 ## Nez Grammar at a Glance
