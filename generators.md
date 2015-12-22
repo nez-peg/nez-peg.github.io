@@ -8,8 +8,8 @@ categories: [document]
 
 Here is a list of parser generators that are supported by Nez.
 
-* [CNez parser](#cnez) - C/C++ 
-* [LPeg convertor](#lpeg) - Lua and LPeg library
+* [CNez parser]() - C/C++ 
+* [LPeg convertor]() - Lua and LPeg library
 
 ## CNez {#cnez}
 
