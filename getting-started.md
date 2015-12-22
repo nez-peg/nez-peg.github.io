@@ -6,7 +6,6 @@ categories: [document]
 
 # Getting Started
 
-
 For this introduction we assume that you have already installed java8 (jre) on MacOS X or other Unix-based operating system.
 
 ## Installation
@@ -15,18 +14,21 @@ To use the nez command, download the `nez.jar` file:
 
 ~~~bash
 curl -O http://nez-peg.github.io/download/nez.jar
-sudo nez.jar /usr/local/lib/nez.jar
+sudo cp nez.jar /usr/local/lib/nez.jar
 alias nez='java -jar /usr/local/lib/nez.jar'
+alias inez='java -jar /usr/local/lib/nez.jar shell'
 ~~~
 
 Also, it is good idea to put the alias setting in your .bash_profile or something like it. 
 
-To test the installation, enter nez and check the version: 
+To test the installation, enter the `nez` command and check the version: 
 
 ```
 $ nez
-Nez-1.0-886 (yokohama) on JvM-1.8.0_xx
-Usage: ..
+inez
+Nez-1.0-892 (beta) on Java JVM-1.8.0_05
+Copyright (c) 2014-2016, Kimio Kuramitsu and Nez project authors
+
 ```
 
 
@@ -34,22 +36,22 @@ Usage: ..
 
 Nez grammar describes both syntactic constructs for the input and data structures for the output. 
 
-The syntactic part is based on parsing expression grammars. 
+The syntactic part is based on [parsing expression grammars](https://en.wikipedia.org/wiki/Parsing_expression_grammar). 
 
 ~~~
 Expression = Sum
 Sum = Product (( '+' / '-' ) Product )*
-Product = Value (( '*' #Mul / '/' #Div ) Value)*
+Product = Value (( '*' / '/' ) Value)*
 Value = [0-9]+ / '(' Expression ')'
 ~~~
 
-The data structure part is additionally specified by PCRE-style capturing notations. 
+The data structure part can be specified by the Nez original notations such as `{ }` and `$( )`. 
 
 ~~~nez
 Expression = Sum
 Sum = Product {$left ( '+' #Add / '-' #Sub ) $right(Product) }*
 Product = Value {$left ( '*' #Mul / '/' #Div ) $right(Value) }*
-Value = { [0-9]+ #Int } / '(' Expression ')'
+Value = { [0-9]+ #Integer } / '(' Expression ')'
 ~~~
 
 ### Sample files

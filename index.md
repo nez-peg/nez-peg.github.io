@@ -38,8 +38,9 @@ To use the nez command, download the nez.jar file:
 
 ~~~
 $ curl -O http://nez-peg.github.io/download/nez.jar
-$ sudo nez.jar /usr/local/lib/nez.jar
+$ sudo cp nez.jar /usr/local/lib/nez.jar
 $ alias nez='java -jar /usr/local/lib/nez.jar'
+$ alias inez='java -jar /usr/local/lib/nez.jar shell'
 ~~~
 
 Also, it is good idea to put the alias setting in your `.bash_profile` or something like it. 
@@ -50,8 +51,6 @@ Let us begin with ["Getting Started"](getting-started.html)
 ## Development
 
 Nez is originally developed by [Kimio Kuramitsu](http://kuramitsulab.github.io/) with his graduate students in Yokohama National University, JAPAN. 
-
-
 
 You are welcome to contribute code. 
 You can send code both as a patch or a GitHub pull request.
